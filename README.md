@@ -1,27 +1,56 @@
-# FastAPI Digital Library
+# FastAPI Digital Library → Gin Orchestrator API
 
 ## 📘 Project Overview
-FastAPI Digital Library is a RESTful backend server built using **FastAPI** to manage books in a digital library.  
-The application demonstrates proper API design, data validation, middleware usage, and self-documenting APIs using Swagger.
+**Digital Library** is a RESTful backend service originally built using **FastAPI (Python)** and later **migrated to Go using the Gin framework** as part of the **Week-5 Orchestrator API assignment**.
+
+The project demonstrates:
+- Language & framework migration (**Python → Go**)
+- Clean Architecture implementation
+- Production-ready REST API practices
+- Middleware, validation, and structured JSON responses
+- Self-documenting API concepts
 
 ---
 
-## ⚙️ Server Details
-- **Framework:** FastAPI  
-- **Language:** Python  
+## 🧭 Project Evolution
+
+### 🔹 Week 3 – FastAPI Implementation
+- Built using **FastAPI (Python)**
+- Focused on CRUD APIs, Pydantic validation, and middleware
+- Used in-memory data storage
+- Swagger (OpenAPI) documentation enabled by default
+
+### 🔹 Week 5 – Gin (Go) Migration
+- Migrated to **Gin framework (Go)**
+- Re-architected using **Clean Architecture**
+- Introduced clear separation of concerns:
+  - Handler (HTTP)
+  - Usecase (Business logic)
+  - Repository (Data layer)
+- Improved error handling and response consistency
+- Implemented production-style middleware
+
+---
+
+## ⚙️ Server Details (Current – Go Version)
+
+- **Framework:** Gin  
+- **Language:** Go  
+- **Architecture:** Clean Architecture  
 - **API Type:** REST  
-- **Data Storage:** In-memory (for demo/learning purposes)  
-- **Documentation:** Swagger UI (OpenAPI)
+- **Data Storage:** In-memory (as per assignment)  
+- **Documentation:** Swagger (optional / future scope)
 
 ---
 
 ## ✨ Features
-- Create, read, update, and delete books
-- Input validation using Pydantic
-- Custom error handling for bad requests
-- Global middleware for request logging
-- Processing time tracking using custom response headers
-- Auto-generated API documentation
+- Full CRUD operations on books
+- Strict input validation
+- Clean Architecture layering
+- Centralized error handling
+- Middleware for request logging
+- Processing time tracking via custom headers
+- Consistent JSON API responses
 
 ---
 
