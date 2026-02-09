@@ -2,10 +2,9 @@ package usecase
 
 import (
 	"errors"
-	"log"
-	"time"
 
 	"github.com/vKousik/fastapi-digital-library/internal/domain"
+	"github.com/vKousik/fastapi-digital-library/internal/infrastructure"
 )
 
 type BookUseCase struct {
@@ -37,10 +36,10 @@ func (b *BookUseCase) CreateBook(book domain.Book) error {
 	if err := b.repo.CreateBook(book); err != nil {
 		return err
 	}
-	go func(bk domain.Book) {
-		time.Sleep(2 * time.Second)
-		log.Printf("[BG] Email sent for book for creation: %s", bk.Title)
-	}(book)
+	infrastructure.JobQueue <- infrastructure.Job{
+		Type:    "SEND_CREATE_NOTIFICATION",
+		Payload: book,
+	}
 	return nil
 }
 
@@ -57,10 +56,11 @@ func (b *BookUseCase) UpdateBook(book domain.Book) error {
 	if err := b.repo.UpdateBook(book); err != nil {
 		return err
 	}
-	go func(bk domain.Book) {
-		time.Sleep(2 * time.Second)
-		log.Printf("[BG] Email sent for book for updation: %s", bk.Title)
-	}(book)
+	infrastructure.JobQueue <- infrastructure.Job{
+		Type:    "SEND_UPDATE_NOTIFICATION",
+		Payload: book,
+	}
+
 	return nil
 }
 
