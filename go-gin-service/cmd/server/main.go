@@ -12,6 +12,7 @@ import (
 func main() {
 	r := gin.Default()
 	r.Use(middleware.Logger())
+	r.Use(middleware.CORS())
 
 	repo := repository.NewInMemoryBookRepository()
 	usecase := usecase.NewBookUseCase(repo)
