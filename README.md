@@ -51,6 +51,7 @@ The project demonstrates:
 - Middleware for request logging
 - Processing time tracking via custom headers
 - Consistent JSON API responses
+- Background Task Processing via Worker Pool
 
 ---
 
